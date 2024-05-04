@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Validation</title>
+</head>
+<body>
+    <form action="./formSave.php" id="admitForm" method="post">
+        <label for="name">Name</label><br/>
+        <input type="text" name="name" id="name"><br/>
+
+        <label for="email">Email</label><br/>
+        <input type="text" name="email" id="email"><br/>
+
+        <label for="password">Password</label><br/>
+        <input type="password" name="password" id="password">
+        <button type="button" id="showPass">Show</button><br/>
+
+        <label for="rePassword">Repeat Password</label><br/>
+        <input type="password" name="rePassword" id="rePassword"><br/>
+
+        <label for="salary">Salary</label><br/>
+        <input type="text" name="salary" id="salary"><br/>
+
+        <label for="bDate">Date</label><br/>
+        <input type="date" name="bDate" id="bDate"><br/><br/>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Add custom method for strong password validation
+$.validator.addMethod("strongPassword", function(value, element) {
+    // Regular expression pattern with positive lookahead assertions
+    return this.optional(element) || /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{8,}$/.test(value);
+    }, "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long");
+
+
+            // Initialize form validation
+            $("#admitForm").validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    bDate: {
+                        required: true,
+                        date: true
+                    },
+                    password: {
+                        required: true,
+                        strongPassword: true // Use the custom strongPassword method
+                    },
+                    salary: {
+                        required: true,
+                        number: true,
+                        range: [4, 6]
+                    },
+                    rePassword: {
+                        required: true,
+                        equalTo: "#password"
+                    }
+                }
+            });
+
+            // Show/hide password
+            $("#showPass").click(function() {
+                var passwordField = $("#password");
+                var fieldType = passwordField.attr("type");
+
+                if (fieldType === "password") {
+                    passwordField.attr("type", "text");
+                    $(this).text("Hide");
+                } else {
+                    passwordField.attr("type", "password");
+                    $(this).text("Show");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

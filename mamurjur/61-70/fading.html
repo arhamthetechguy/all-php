@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="slider" style="width: 200px; height: 200px; display: none; background-color: aqua;" >
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam optio hic quasi ea vitae cumque quae, et tempora commodi?</p>
+    </div>
+    <div id="slider2" style="width: 200px; height: 200px; display: none; background-color: rgb(38, 0, 255);" >
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam optio hic quasi ea vitae cumque quae, et tempora commodi?</p>
+    </div>
+    <div id="slider3" style="width: 200px; height: 200px; display: none; background-color: rgb(255, 0, 119);" >
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam optio hic quasi ea vitae cumque quae, et tempora commodi?</p>
+    </div>
+    
+    <script>
+        $(document).ready(function(){
+                // $("#slider").hide(1000);
+                // $("#slider").show(1000);
+                // $("#slider").fadeOut(1000);
+                // $("#slider").fadeIn(1000);
+
+                $('#slider').fadeIn(1000);
+                $('#slider2').fadeIn(2000);
+                $('#slider3').fadeIn(3000);
+
+                $('#slider').fadeOut(1000);
+                $('#slider2').fadeOut(2000);
+                $('#slider3').fadeOut(3000);
+        });
+    </script>
+</body>
+</html>

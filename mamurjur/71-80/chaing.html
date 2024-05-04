@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <script src="jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="slider" style="height: 150px; width: 100%; background-color: #00ffb3;" src="th.jpg">slider</div>
+
+    <!-- <button>Change color to red</button> -->
+    
+
+    <script>
+        $(document).ready(function(){
+            // $("button").click(function(){
+            //     $("#slider").css("background-color", "red").slideDown(1000).slideUp(2000);
+            // })
+
+            let sliderUp = true;
+
+            function slideBox(){
+                if(sliderUp){
+                    $("#slider").slideUp(1000);
+                } else {
+                    $("#slider").slideDown();
+                }
+                
+                sliderUp = !sliderUp;
+            }
+
+
+            setInterval(slideBox, 500);
+
+        })
+    </script>
+  </body>
+</html>

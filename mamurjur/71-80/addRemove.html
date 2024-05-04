@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <!-- <ol>
+        <li>Home</li>
+    </ol>
+    <button>Add</button>
+
+    <script>
+        $("button").click(function(){
+            $("ol").append("<li>Service</li>")
+        })
+    </script> -->
+
+    <!-- <h1>Hello world!</h1>
+<button>add text</button>
+
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("h1").append(" How you all?");
+        });
+
+        $("button").dblclick(function(){
+            $("h1").empty();
+        });
+    });
+</script> -->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>City</th>
+    </tr>
+    <tr id="row" >
+        <td><input type="text" name="name" id="name"></td>
+    </tr>
+</table>
+
+    <button id="add" >Add more</button>
+    <button id="remove" >Remove</button>
+    
+    <script>
+        $(document).ready(function(){
+            $("#add").click(function(){
+                let tdCount = $("#row td").length;
+                let maxTd = 5;
+
+                if(tdCount < maxTd){
+                    $("#row").append('<td><input type="text" name="name" id="name"></td>')
+                } else {
+                    alert("A maximum field of "+maxTd+" fields are allowed to be added.")
+                }
+
+            })
+            $("#remove").click(function(){
+                let tdCount = $("#row td").length;
+                let maxTd = 1;
+                if(tdCount > maxTd){
+                    $("#row td:last-child").remove();
+                } else {
+                    alert("You have to keep at least "+maxTd+" field")
+                }
+            })
+        })
+    </script>
+
+<div class="field_wrapper">
+    <div>
+        <input type="text" name="field_name[]" value=""/>
+        <a href="javascript:void(0);" class="add_button" title="Add field"><img src="images/add-icon.png"/></a>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var maxField = 10; //Input fields increment limitation
+        var addButton = $('.add_button'); //Add button selector
+        var wrapper = $('.field_wrapper'); //Input field wrapper
+        var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="images/remove-icon.png"/></a></div>'; //New input field html 
+        var x = 1; //Initial field counter is 1
+        
+        // Once add button is clicked
+        $(addButton).click(function(){
+            //Check maximum number of input fields
+            if(x < maxField){ 
+                x++; //Increase field counter
+                $(wrapper).append(fieldHTML); //Add field html
+            }else{
+                alert('A maximum of '+maxField+' fields are allowed to be added. ');
+            }
+        });
+        
+        // Once remove button is clicked
+        $(wrapper).on('click', '.remove_button', function(e){
+            e.preventDefault();
+            $(this).parent('div').remove(); //Remove field html
+            x--; //Decrease field counter
+        });
+    });
+    </script>
+
+
+</body>
+</html>

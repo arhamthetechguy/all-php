@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <script src="jquery.min.js"></script>
+  </head>
+  <body>
+    
+    <h1 id="text" ><b>Allah Mohan</b></h1>
+    <input type="text" name="username" id="name">
+    <a href="test"></a>
+    <button id="get" >Get Text</button>
+
+    <script>
+        $(document).ready(function(){
+
+            $("#get").click(function(){
+                // alert($("#text").text());
+                // alert($("#text").html());
+                // alert($("#name").val())
+                // alert($("#name").attr("name"))
+                alert($("a").attr("href"))
+            })
+
+        });
+    </script>
+    
+
+    
+  </body>
+</html>
